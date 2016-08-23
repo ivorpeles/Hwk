@@ -1,0 +1,26 @@
+#!/bin/bash
+mkdir $1                                                                               
+cd $1                                                                                  
+                                                                                       
+touch temp                                                                             
+touch "$1.tex"                                                                         
+touch "Makefile"                                                                       
+                                                                                       
+echo -e "\\documentclass{report}" >> temp                                              
+echo -e "\\usepackage{amsmath}" >> temp                                                
+echo -e "\\usepackage{amssymb}" >> temp                                                
+echo -e "\\usepackage{fancyhdr}" >> temp                                               
+echo -e "\\pagestyle{fancy}" >> temp                                                   
+echo "\lhead{Your Name}" >> temp                                                      
+echo "\rhead{Your Student ID}" >> temp
+echo -n "\chead{" >> temp                                                              
+date | tr "\n" " " >> temp                                                             
+echo -e "}" >> temp                                                                    
+echo -n "\begin{document}" >> temp                                                     
+echo -n "" >> temp                                                                     
+echo -e "\n\\end{document}" >> temp                                                    
+                                                                                       
+echo -e "all:$1.tex\n\tpdflatex $1.tex\n\topen $1.pdf" >> Makefile                     
+echo -e | cat temp >> "$1.tex"                                                         
+                                                                                       
+rm temp                                                                                
