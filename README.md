@@ -23,7 +23,7 @@ This is ideal for vim users as you can compile directly from the vim text
 editor as pictured below:
 
 ![example](./Images/example2.png)
-![example](./Images/example3.png)
+<img src="./Images/example3.png" width="564" height="430">
 
 This lets you skip most of your boilerplating, and also sets up a
 makefile that consolidates all of your typesetting related command line
